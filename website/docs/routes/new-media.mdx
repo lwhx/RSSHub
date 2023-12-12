@@ -1704,11 +1704,15 @@ Compared to the official one, this feed:
 
 <Route author="WhiteWorld nczitzk Fatpandac" example="/readhub" path="/readhub/:category?" paramsDesc={['分类，见下表，默认为热门话题']} radar="1">
 
-| 热门话题 | 每日早报 | 科技动态 | 医疗产业 |
-| -------- | -------- | -------- | -------- |
-|          | daily    | news     | medical  |
+| 热门话题 | 科技动态 | 医疗产业    | 财经快讯              |
+| ---- | ---- | ------- | ----------------- |
+|      | news | medical | financial_express |
 
 </Route>
+
+### 每日早报 {#readhub-mei-ri-zao-bao}
+
+<Route author="nczitzk" example="/readhub/daily" path="/readhub/daily" radar="1"/>
 
 ## Sakamichi Series 坂道系列官网资讯 {#sakamichi-series-ban-dao-xi-lie-guan-wang-zi-xun}
 
@@ -1990,7 +1994,7 @@ Member ID
 
 ### News {#techcrunch-news}
 
-<Route author="NavePnow" example="/techcrunch/news" path="/techcrunch/news"/>
+<Route author="EthanWng97" example="/techcrunch/news" path="/techcrunch/news"/>
 
 ## TechPowerUp {#techpowerup}
 
@@ -2519,6 +2523,53 @@ Supported sub-sites:
 ### Archive {#world-happiness-archive}
 
 <Route author="nczitzk" example="/worldhappiness/archive" path="/worldhappiness/archive"/>
+
+## Yahoo {#yahoo}
+
+### News {#yahoo-news}
+
+<Route author="KeiLongW" example="/yahoo/news/hk/world" path="/yahoo/news/:region/:category?" paramsDesc={['Region, see the table below','Category, see the table below']}>
+
+`Region`
+
+| Hong Kong | Taiwan | US |
+| --------- | ------ | --- |
+| hk        | tw     | en  |
+
+<details>
+  <summary>`Category` (Hong Kong)</summary>
+  | 全部     | 港聞      | 兩岸國際 | 財經     | 娛樂           | 體育   | 健康    | 親子      | 副刊        |
+  | ------- | --------- | ------ | -------- | ------------- | ------ | ------ | -------- | ----------- |
+  | （留空） | hong-kong | world  | business | entertainment | sports | health | parenting | supplement |
+</details>
+<details>
+  <summary>`Category` (Taiwan)</summary>
+  | 全部     | 政治     | 財經      | 娛樂          | 運動    | 社會地方 | 國際   | 生活      | 健康    | 科技        | 品味  |
+  | ------- | -------- | -------- | ------------- | ------ | ------- | ----- | -------- | ------- | ---------- | ----- |
+  | （留空） | politics | finance  | entertainment | sports | society | world | lifestyle | health | technology | style |
+</details>
+<details>
+  <summary>`Category` (US)</summary>
+  | All | World | Business | Entertainment | Sports | Health |
+  | ------- | ----- | -------- | ------------- | ------ | ------ |
+  | (Empty) | world | business | entertainment | sports | health |
+</details>
+
+</Route>
+
+### 新聞來源 {#yahoo-xin-wen-lai-yuan}
+
+<Route author="TonyRL" example="/yahoo/news/provider/tw/udn.com" path="/yahoo/news/provider/:region/:providerId" paramsDesc={['地區，見下表', '新聞來源 ID，可透過下方新聞來源列表獲得']} radar="1">
+
+| 香港 | 台灣 |
+| ---- | ---- |
+| hk   | tw   |
+
+</Route>
+
+### 新聞來源列表 {#yahoo-xin-wen-lai-yuan-lie-biao}
+
+<Route author="TonyRL" example="/yahoo/news/providers/tw" path="/yahoo/news/providers/:region" paramsDesc={['地區，見上表']} />
 
 ## ZAKER {#zaker}
 
@@ -3483,33 +3534,73 @@ others = 热点新闻 + 滚动新闻
 
 ## 虎嗅 {#hu-xiu}
 
-### 首页资讯 {#hu-xiu-shou-ye-zi-xun}
+### 资讯 {#hu-xiu-zi-xun}
 
-<Route author="HenryQW" example="/huxiu/article" path="/huxiu/article" />
+<Route author="HenryQW nczitzk" example="/huxiu/article" path="/huxiu/article" radar="1" supportBT="1" supportPodcast="1"/>
+
+### 频道 {#hu-xiu-pin-dao}
+
+<Route author="nczitzk" example="/huxiu/channel/10" path="/huxiu/channel/:id?" paramsDesc={['频道 id，可在对应频道页 URL 中找到，见下表，默认为最新']} radar="1" supportBT="1" supportPodcast="1">
+
+| 视频  | 车与出行 | 年轻一代 | 十亿消费者 | 前沿科技 |
+| --- | ---- | ---- | ----- | ---- |
+| 10  | 21   | 106  | 103   | 105  |
+
+| 财经  | 娱乐淘金 | 医疗健康 | 文化教育 | 出海  |
+| --- | ---- | ---- | ---- | --- |
+| 115 | 22   | 111  | 113  | 114 |
+
+| 金融地产 | 企业服务 | 创业维艰 | 社交通讯 | 全球热点 | 生活腔调 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| 102  | 110  | 2    | 112  | 107  | 4    |
+
+</Route>
 
 ### 24 小时 {#hu-xiu-24-xiao-shi}
 
-<Route author="nczitzk" example="/huxiu/moment" path="/huxiu/moment" />
+<Route author="nczitzk" example="/huxiu/moment" path="/huxiu/moment" radar="1" supportBT="1" supportPodcast="1"/>
+
+### 源流 {#hu-xiu-yuan-liu}
+
+<Route author="nczitzk" example="/huxiu/club/1000" path="/huxiu/club/:id?" paramsDesc={['源流 id，可在对应源流页 URL 中找到']} radar="1" supportBT="1" supportPodcast="1">
+
+更多源流请参见 [源流广场](https://www.huxiu.com/club)
+
+</Route>
 
 ### 标签 {#hu-xiu-biao-qian}
 
-<Route author="xyqfer HenryQW" example="/huxiu/tag/291" path="/huxiu/tag/:id" paramsDesc={['标签 id']} anticrawler="1"/>
+<Route author="xyqfer HenryQW nczitzk" example="/huxiu/tag/291" path="/huxiu/tag/:id" paramsDesc={['标签 id，可在对应标签页 URL 中找到']} radar="1" supportBT="1" supportPodcast="1">
+
+更多标签请参见 [标签](https://www.huxiu.com/tags)
+
+</Route>
 
 ### 搜索 {#hu-xiu-sou-suo}
 
-<Route author="xyqfer HenryQW" example="/huxiu/search/%E8%99%8E%E5%97%85%E6%97%A9%E6%8A%A5" path="/huxiu/search/:keyword" paramsDesc={['关键字']} />
+<Route author="xyqfer HenryQW nczitzk" example="/huxiu/search/生活" path="/huxiu/search/:keyword" paramsDesc={['关键字']} radar="1" supportBT="1" supportPodcast="1"/>
 
 ### 作者 {#hu-xiu-zuo-zhe}
 
-<Route author="HenryQW" example="/huxiu/author/29318" path="/huxiu/author/:id" paramsDesc={['用户 id']} anticrawler="1" />
+<Route author="HenryQW nczitzk" example="/huxiu/member/29318" path="/huxiu/member/:id/:type?" paramsDesc={['用户 id，可在对应用户页 URL 中找到', '类型，可在对应用户页 URL 中找到']} radar="1" supportBT="1" supportPodcast="1">
+
+| TA的文章   | TA的24小时 |
+| ------- | ------- |
+| article | moment  |
+
+</Route>
 
 ### 文集 {#hu-xiu-wen-ji}
 
-<Route author="AlexdanerZe" example="/huxiu/collection/212" path="/huxiu/collection/:id" paramsDesc={['文集 id']} notOperational="1" />
+<Route author="AlexdanerZe nczitzk" example="/huxiu/collection/212" path="/huxiu/collection/:id" paramsDesc={['文集 id，可在对应文集页 URL 中找到']} radar="1" supportBT="1" supportPodcast="1">
+
+更多文集请参见 [文集](https://www.huxiu.com/collection)
+
+</Route>
 
 ### 简报 {#hu-xiu-jian-bao}
 
-<Route author="Fatpandac" example="/huxiu/briefcolumn/1" path="/huxiu/briefcolumn/:id" paramsDesc={['简报 id']}  anticrawler="1"/>
+<Route author="Fatpandac nczitzk" example="/huxiu/briefcolumn/1" path="/huxiu/briefcolumn/:id" paramsDesc={['简报 id，可在对应简报页 URL 中找到']} radar="1" supportBT="1" supportPodcast="1"/>
 
 ## 互动吧 {#hu-dong-ba}
 
@@ -4728,6 +4819,12 @@ column 为 third 时可选的 category:
 
 </Route>
 
+## 米课 {#mi-ke}
+
+### 米课圈精华 {#mi-ke-mi-ke-quan-jing-hua}
+
+<Route author="nczitzk" example="/imiker/ask/jinghua" path="/imiker/ask/jinghua" radar="1"/>
+
 ## 摩点 {#mo-dian}
 
 ### 众筹 {#mo-dian-zhong-chou}
@@ -5682,7 +5779,7 @@ column 为 third 时可选的 category:
 
 ### 公众号（搜狗来源） {#wei-xin-gong-zhong-hao-sou-gou-lai-yuan}
 
-<Route author="NavePnow" example="/wechat/sogou/qimao0908" path="/wechat/sogou/:id" paramsDesc={['公众号 id, 打开 weixin.sogou.com 并搜索相应公众号， 在 URL 中找到 id']} notOperational="1"/>
+<Route author="EthanWng97" example="/wechat/sogou/qimao0908" path="/wechat/sogou/:id" paramsDesc={['公众号 id, 打开 weixin.sogou.com 并搜索相应公众号， 在 URL 中找到 id']} notOperational="1"/>
 
 ## 维基百科 {#wei-ji-bai-ke}
 
@@ -6398,6 +6495,12 @@ column 为 third 时可选的 category:
 | Information | Dynamics | TechNews |
 
 </Route>
+
+## 中国科普博览 {#zhong-guo-ke-pu-bo-lan}
+
+### 直播回看 {#zhong-guo-ke-pu-bo-lan-zhi-bo-hui-kan}
+
+<Route author="nczitzk" example="/kepu/live" path="/kepu/live" radar="1" supportBT="1"/>
 
 ## 中国科学院青年创新促进会 {#zhong-guo-ke-xue-yuan-qing-nian-chuang-xin-cu-jin-hui}
 
